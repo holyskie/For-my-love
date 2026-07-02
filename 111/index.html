@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love! 💖</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="heart-bg-container" id="heartBg"></div>
+
+    <div class="music-player">
+        <span class="music-title">🎵 Love Of My Life</span>
+        <div class="controls">
+            <button id="playPauseBtn" class="music-btn">Play</button>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+        </div>
+        <audio id="bgMusic" loop src="Mitski - My Love Mine All Mine.mp3"></audio>
+    </div>
+
+    <main class="container">
+        
+        <header class="hero-section">
+            <h1 class="main-title">Happy Birthday My Love! 🎂💕</h1>
+            <p class="subtitle">Wishing you a magical day filled with all the joy, love, and sweet surprises you bring into my life every single day.</p>
+        </header>
+
+        <section class="photo-featured-section">
+            <div class="photo-frame">
+                <img src="80e55a6d-7450-4659-9a30-64544da16ec0.jpg" alt="Birthday Photo" class="main-photo" onerror="this.src='https://placehold.co/400x500/ffb3c6/ffffff?text=My+Favorite+Person'">
+                <div class="frame-caption">My Favorite Person And My Wife ❤️</div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2 class="section-heading">Our Beautiful Memories 📸💕</h2>
+            <div class="slider-wrapper">
+                <div class="slider">
+                    <div class="slide active">
+                        <img src="c05859b5-7559-49ca-a6ed-cf0ecef1650d.jpg" alt="Memory 1" onerror="this.src='https://placehold.co/600x400/ffc2d1/ffffff?text=Memory+1'">
+                    </div>
+                    <div class="slide">
+                        <img src="ad5e9ae9-54f5-4483-97fb-f3de57e513ca.jpg" alt="Memory 2" onerror="this.src='https://placehold.co/600x400/ffb3c6/ffffff?text=Memory+2'">
+                    </div>
+                    <div class="slide">
+                        <img src="309157bd-19b7-4239-8f80-32032644188d.jpg" alt="Memory 3" onerror="this.src='https://placehold.co/600x400/ff85a1/ffffff?text=Memory+3'">
+                    </div>
+                    <div class="slide">
+                        <img src="59dddf51-73dc-4214-b381-edb85903ae5f.jpg" alt="Memory 4" onerror="this.src='https://placehold.co/600x400/ffe5ec/ffffff?text=Memory+4'">
+                    </div>
+                </div>
+                <button class="slider-nav prev" id="prevBtn">&#10094;</button>
+                <button class="slider-nav next" id="nextBtn">&#10095;</button>
+            </div>
+        </section>
+
+        <div class="interactive-grid">
+            
+            <section class="card cake-card">
+                <h2>Blow Your Candles 🎂</h2>
+                <div class="cake-container">
+                    <div class="cake">
+                        <div class="candle-container">
+                            <div class="candle"><div class="flame"></div></div>
+                            <div class="candle"><div class="flame"></div></div>
+                            <div class="candle"><div class="flame"></div></div>
+                        </div>
+                        <div class="frosting"></div>
+                        <div class="cake-layer layer-top"></div>
+                        <div class="cake-layer layer-bottom"></div>
+                    </div>
+                </div>
+                <button id="blowBtn" class="btn-primary">Blow Candles 🎂</button>
+                <p id="cakeMessage" class="status-message"></p>
+            </section>
+
+            <section class="card gift-card">
+                <h2>A Special Surprise 🎁</h2>
+                <div class="gift-container">
+                    <div class="gift-box" id="giftBox">
+                        <div class="lid"></div>
+                        <div class="box-body"></div>
+                        <div class="bouquet" id="bouquet">🌸💐🌹</div>
+                    </div>
+                </div>
+                <button id="giftBtn" class="btn-primary">Open Gift 🎁</button>
+                <p id="giftMessage" class="status-message"></p>
+            </section>
+
+        </div>
+
+        <section class="letter-trigger-section">
+            <button id="openLetterBtn" class="btn-primary btn-large">Read My Message 💌</button>
+        </section>
+
+    </main>
+
+    <div class="modal" id="letterModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLetterBtn">&times;</span>
+            <div class="letter-paper">
+                <h3>Dearest,</h3>
+                <p id="typingText" class="letter-body"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Made with your partner Amer Langcap.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
