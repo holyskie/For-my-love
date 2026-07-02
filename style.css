@@ -1,0 +1,617 @@
+/* --- Core Themes & Variables --- */
+:root {
+    --bg-gradient: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+    --pastel-pink: #ffb3c6;
+    --rose-pink: #ff85a1;
+    --blush-pink: #ff477e;
+    --white: #ffffff;
+    --text-color: #4a4a4a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* --- Floating Background Elements --- */
+.heart-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    background: rgba(255, 71, 126, 0.2);
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    transform: rotate(-45deg);
+    border-radius: 5px;
+    animation: floatUp 8s linear infinite;
+}
+
+.floating-heart::before, .floating-heart::after {
+    content: "";
+    background: rgba(255, 71, 126, 0.2);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+}
+.floating-heart::before { top: -15px; left: 0; }
+.floating-heart::after { left: 15px; top: 0; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0) rotate(-45deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-105vh) rotate(-45deg); opacity: 0; }
+}
+
+/* --- Hero Layout --- */
+.hero-section {
+    margin: 2rem 0;
+    animation: fadeInDown 1s ease-out;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: var(--blush-pink);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Featured Photo Section --- */
+.photo-featured-section {
+    margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.photo-frame {
+    background: var(--white);
+    padding: 1.2rem;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(255, 71, 126, 0.25);
+    border: 3px solid var(--pastel-pink);
+    max-width: 380px;
+    animation: floatFrame 4s ease-in-out infinite alternate;
+    transition: box-shadow 0.5s ease;
+}
+
+.photo-frame:hover {
+    box-shadow: 0 0 25px 5px rgba(255, 71, 126, 0.5);
+}
+
+.main-photo {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+
+.frame-caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: var(--blush-pink);
+    margin-top: 1rem;
+}
+
+@keyframes floatFrame {
+    0% { transform: translateY(0px) rotate(-1deg); }
+    100% { transform: translateY(-15px) rotate(1deg); }
+}
+
+/* --- Photo Gallery Carousel --- */
+.gallery-section {
+    margin: 4rem auto;
+    max-width: 700px;
+    z-index: 5;
+    position: relative;
+}
+
+.section-heading {
+    color: var(--blush-pink);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.slider-wrapper {
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    background: #fff;
+    border: 5px solid var(--white);
+}
+
+.slider {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--blush-pink);
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.slider-nav:hover { background: var(--white); }
+.prev { left: 15px; }
+.next { right: 15px; }
+
+/* --- Interactive Features Cards Grid --- */
+.interactive-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin: 4rem 0;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 350px;
+    box-shadow: 0 8px 24px rgba(255, 133, 161, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card h2 { color: var(--rose-pink); font-size: 1.4rem; margin-bottom: 1.5rem; }
+
+/* --- Buttons --- */
+.btn-primary {
+    background: var(--rose-pink);
+    color: var(--white);
+    border: none;
+    padding: 0.7rem 1.8rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255, 133, 161, 0.3);
+    transition: all 0.3s ease;
+    margin-top: 1.2rem;
+}
+
+.btn-primary:hover {
+    background: var(--blush-pink);
+    transform: scale(1.05);
+}
+
+.btn-large {
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+}
+
+/* --- Birthday Cake Section Graphics --- */
+.cake-container { height: 150px; display: flex; align-items: flex-end; position: relative; margin-bottom: 0.5rem;}
+.cake { width: 150px; position: relative; transition: filter 0.5s ease;}
+.cake.glowing { filter: drop-shadow(0 0 12px rgba(255, 71, 126, 0.6)); }
+.cake-layer { height: 35px; border-radius: 6px 6px 0 0; }
+.layer-bottom { background: #f4acb7; }
+.layer-top { background: #ffb3c6; height: 32px; }
+.frosting { background: var(--white); height: 18px; width: 100%; border-radius: 8px 8px 0 0; position: absolute; top: 28px; z-index: 2; border-bottom: 3px dashed var(--rose-pink); }
+.candle-container { position: absolute; top: -15px; width: 100%; display: flex; justify-content: space-around; padding: 0 15px; }
+.candle { width: 6px; height: 25px; background: linear-gradient(to right, #72efdd, #5bc0be); position: relative; }
+.flame { width: 10px; height: 15px; background: #ffb703; border-radius: 50% 50% 20% 20%; position: absolute; top: -16px; left: -2px; animation: flicker 0.5s ease-in-out infinite alternate; transform-origin: bottom center; }
+.flame.extinguished { display: none; }
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); }
+    100% { transform: scale(1.1) rotate(2deg); }
+}
+
+/* --- Gift Box Graphics --- */
+.gift-container { height: 150px; display: flex; align-items: flex-end; }
+.gift-box { position: relative; width: 110px; height: 110px; }
+.box-body { width: 100%; height: 90px; background: var(--rose-pink); border-radius: 0 0 6px 6px; position: absolute; bottom: 0; border-left: 12px solid rgba(0,0,0,0.05); border-right: 12px solid rgba(0,0,0,0.05); }
+.lid { width: 120px; height: 22px; background: var(--pastel-pink); border-radius: 4px; position: absolute; top: 3px; left: -5px; z-index: 3; transition: transform 0.6s ease; }
+.gift-box.open .lid { transform: translateY(-35px) rotate(-20deg); opacity: 0.8; }
+.bouquet { font-size: 3rem; position: absolute; top: 20px; left: 16px; z-index: 1; opacity: 0; transform: scale(0.2); transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.2); }
+.gift-box.open .bouquet { opacity: 1; transform: translateY(-55px) scale(1.3); animation: bouquetFloat 2s ease-in-out infinite alternate; }
+
+@keyframes bouquetFloat {
+    0% { transform: translateY(-55px) scale(1.3) rotate(-2deg); }
+    100% { transform: translateY(-62px) scale(1.3) rotate(2deg); }
+}
+
+.status-message { margin-top: 1rem; font-weight: 600; color: var(--blush-pink); min-height: 24px; }
+
+/* --- Music Player Block --- */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--pastel-pink);
+}
+
+.music-title { font-size: 0.85rem; font-weight: 600; color: var(--blush-pink); }
+.music-btn { background: var(--rose-pink); color: #fff; border: none; padding: 0.3rem 0.8rem; border-radius: 15px; cursor: pointer; font-size: 0.8rem; }
+.music-btn:hover { background: var(--blush-pink); }
+#volumeControl { width: 70px; accent-color: var(--rose-pink); cursor: pointer; }
+
+/* --- Letter Modal Popup Window --- */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+}
+
+.modal-content {
+    background: #fff8f8;
+    padding: 2.5rem;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 2px solid var(--pastel-pink);
+    transform: scale(0.7);
+    transition: transform 0.3s ease;
+}
+
+.modal.open { display: flex; }
+.modal.open .modal-content { transform: scale(1); }
+
+.close-modal {
+    position: absolute;
+    top: 15px; right: 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--rose-pink);
+}
+
+.letter-paper { text-align: left; }
+.letter-paper h3 { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: var(--blush-pink); margin-bottom: 1rem; }
+.letter-body { font-size: 1.05rem; line-height: 1.6; color: #555; white-space: pre-line; border-left: 2px dashed var(--pastel-pink); padding-left: 15px; }
+
+/* --- Footer --- */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 3rem;
+}
+
+/* --- Tablet Responsiveness (768px and below) --- */
+@media (max-width: 768px) {
+    .main-title { font-size: 2.8rem; }
+    .subtitle { font-size: 1rem; padding: 0 1rem; }
+    .slider { height: 280px; }
+    .interactive-grid { gap: 1.5rem; margin: 2rem 0; }
+    .card { width: 90%; max-width: 330px; padding: 1.5rem; }
+    .music-player { padding: 0.5rem 1rem; font-size: 0.8rem; }
+    .modal-content { padding: 2rem; width: 95%; }
+    .container { padding: 1.5rem; }
+}
+
+/* --- Mobile Responsiveness (600px and below - tablets in portrait) --- */
+@media (max-width: 600px) {
+    body { padding-bottom: 100px; }
+    
+    .container { 
+        max-width: 100%;
+        padding: 1rem; 
+        margin: 0;
+    }
+
+    /* Hero Section */
+    .hero-section { margin: 1rem 0; }
+    .main-title { 
+        font-size: 2.2rem; 
+        margin-bottom: 0.8rem;
+        line-height: 1.2;
+    }
+    .subtitle { 
+        font-size: 0.95rem; 
+        line-height: 1.5;
+        padding: 0 0.5rem;
+    }
+
+    /* Photo Frame */
+    .photo-featured-section { margin: 2rem 0; }
+    .photo-frame { 
+        max-width: 100%;
+        width: 95%;
+        padding: 1rem;
+    }
+    .frame-caption { font-size: 1.4rem; }
+
+    /* Gallery */
+    .gallery-section { 
+        margin: 2rem auto;
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+    .section-heading { font-size: 1.5rem; margin-bottom: 1rem; }
+    .slider { height: 250px; }
+    .slider-nav { padding: 0.6rem 0.8rem; font-size: 1.2rem; }
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Interactive Cards Grid */
+    .interactive-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        margin: 1.5rem 0;
+        width: 100%;
+    }
+    .card { 
+        width: 90%;
+        max-width: 100%;
+        padding: 1.2rem;
+        border-radius: 15px;
+    }
+    .card h2 { font-size: 1.2rem; }
+
+    /* Cake Section */
+    .cake-container { height: 120px; }
+    .cake { width: 120px; }
+    .candle { height: 20px; }
+    .flame { height: 12px; }
+
+    /* Gift Section */
+    .gift-container { height: 120px; }
+    .gift-box { width: 90px; height: 90px; }
+
+    /* Buttons */
+    .btn-primary {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        width: 90%;
+        max-width: 250px;
+    }
+    .btn-large {
+        font-size: 1rem;
+        padding: 0.8rem 2rem;
+        width: 90%;
+    }
+
+    /* Music Player */
+    .music-player {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        width: calc(100% - 20px);
+        flex-wrap: wrap;
+        padding: 0.6rem 1rem;
+        gap: 8px;
+        justify-content: space-around;
+        border-radius: 20px;
+    }
+    .music-title { font-size: 0.8rem; }
+    .controls { 
+        display: flex;
+        gap: 8px;
+        width: 100%;
+        justify-content: center;
+    }
+    #volumeControl { width: 60px; }
+
+    /* Modal */
+    .modal { background: rgba(0, 0, 0, 0.5); }
+    .modal-content {
+        padding: 1.5rem;
+        width: 95%;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+    .letter-paper h3 { font-size: 1.8rem; }
+    .letter-body { 
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    /* Footer */
+    footer { 
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* --- Small Mobile Devices (480px and below - iPhone SE, small Android) --- */
+@media (max-width: 480px) {
+    body { padding-bottom: 120px; }
+    
+    .container { padding: 0.8rem; }
+
+    .hero-section { margin: 0.8rem 0; }
+    .main-title { 
+        font-size: 1.8rem;
+        margin-bottom: 0.6rem;
+    }
+    .subtitle { 
+        font-size: 0.9rem;
+        padding: 0;
+    }
+
+    .photo-featured-section { margin: 1.5rem 0; }
+    .photo-frame { 
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0 auto;
+    }
+    .frame-caption { font-size: 1.2rem; }
+
+    .gallery-section { margin: 1.5rem 0; }
+    .section-heading { font-size: 1.3rem; }
+    .slider { height: 200px; }
+    .slider-nav { 
+        padding: 0.5rem 0.6rem;
+        font-size: 1rem;
+    }
+
+    .interactive-grid { gap: 1rem; }
+    .card { 
+        width: 95%;
+        padding: 1rem;
+        border-radius: 12px;
+    }
+    .card h2 { font-size: 1.1rem; }
+
+    .cake { width: 100px; }
+    .cake-container { height: 100px; }
+    .candle { height: 18px; }
+    .gift-box { width: 80px; height: 80px; }
+    .gift-container { height: 100px; }
+
+    .btn-primary {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        width: 95%;
+    }
+    .btn-large {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.5rem;
+    }
+
+    .music-player {
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        width: calc(100% - 16px);
+        padding: 0.5rem 0.8rem;
+    }
+    .music-title { font-size: 0.75rem; }
+    .music-btn { padding: 0.25rem 0.6rem; font-size: 0.75rem; }
+    .controls { gap: 6px; }
+    #volumeControl { width: 50px; }
+
+    .modal-content {
+        padding: 1.2rem;
+        max-width: 95%;
+    }
+    .close-modal { font-size: 1.5rem; top: 10px; right: 15px; }
+    .letter-paper h3 { font-size: 1.5rem; }
+    .letter-body { 
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+}
+
+/* --- Extra Small Devices (360px and below - Small Android phones) --- */
+@media (max-width: 360px) {
+    .main-title { 
+        font-size: 1.6rem;
+        margin-bottom: 0.5rem;
+    }
+    .subtitle { font-size: 0.85rem; }
+
+    .slider { height: 180px; }
+    .slider-nav { padding: 0.4rem 0.5rem; font-size: 0.9rem; }
+
+    .card { 
+        width: 100%;
+        padding: 0.8rem;
+    }
+    .card h2 { font-size: 1rem; }
+
+    .cake { width: 90px; }
+    .gift-box { width: 75px; height: 75px; }
+
+    .btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+
+    .music-player { padding: 0.4rem 0.6rem; }
+    .music-title { font-size: 0.7rem; }
+
+    .modal-content { padding: 1rem; }
+    .letter-body { font-size: 0.85rem; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
